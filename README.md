@@ -16,7 +16,7 @@ The main branch works with PyTorch 1.8+.
 Please refer to the following documentation for detailed instructions:
 
 - [Installation guide](docs/en/get_started.md)
-- [Dataset preparation](docs/user_guides/2_dataset_prepare.md)
+- [Dataset preparation](docs/en/user_guides/2_dataset_prepare.md)
 
 ---
 
@@ -54,4 +54,5 @@ If you find this project useful in your research, please cite the following pape
 ```
 ## License
 
-This project is released under the Apache License 2.0.
+This project is released under the [Apache License 2.0](LICENSE).
+
