@@ -10,7 +10,7 @@ from mmengine.runner import Runner
 
 from mmseg.registry import RUNNERS
 
-import mmseg.engine.hooks  # ✅ 强制注册进 HOOKS
+import mmseg.engine.hooks
 
 
 

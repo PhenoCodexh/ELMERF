@@ -3,19 +3,19 @@
 Our dataset is organized in the form of Pascal VOC.
 The specific file structure is as follows:
 
+```text
 mmsegmentation
-├── data
-│   ├── RSSD
-│   │   ├── JPEGImages
-│   │   ├── SegmentationClass
-│   │   ├── ImageSets
-│   │   │   ├── Segmentation
-|   |   |   |  ├──train.txt
-|   |   |   |  ├──val.txt
-|   |   |   |  ├──tset.txt
+└── data
+    └── RSSD
+        ├── JPEGImages
+        ├── SegmentationClass
+        └── ImageSets
+            └── Segmentation
+                ├── train.txt
+                ├── val.txt
+                └── test.txt
 
----
-
+```
 ## Dataset Format
 
 - **JPEGImages/**  
@@ -42,8 +42,8 @@ The RSSD dataset supports organ-level semantic segmentation with the following c
 | Class ID | Class Name  |
 |---------:|-------------|
 | 0        | Background  |
-| 1        | Green leaf  |
-| 2        | Yellow leaf |
+| 1        | Greenleaf   |
+| 2        | Yellowleaf  |
 | 3        | Root        |
 
 ---
@@ -58,5 +58,4 @@ The RSSD dataset supports organ-level semantic segmentation with the following c
 
 ## RSSD Dataset
 
-For data acquisition, please contact  
-**liuhy@hainanu.edu.cn**
+For data acquisition, please contact **liuhy@hainanu.edu.cn**

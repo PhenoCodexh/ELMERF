@@ -15,8 +15,8 @@ The main branch works with PyTorch 1.8+.
 
 Please refer to the following documentation for detailed instructions:
 
-- [Installation guide](docs/get_started.md)
-- [Dataset preparation](docs/dataset_prepare.md)
+- [Installation guide](docs/en/get_started.md)
+- [Dataset preparation](docs/user_guides/2_dataset_prepare.md)
 
 ---
 
@@ -38,18 +38,6 @@ To generate segmentation masks from pretrained models, use the inference script:
 
 ---
 
-## Documentation
-
-All project documentation can be accessed directly on GitHub:
-
-- [Installation](docs/get_started.md)
-- [Dataset preparation](docs/dataset_prepare.md)
-- [Inference](docs/inference.md)
-
-Clicking any link above will open the corresponding documentation page in GitHub Preview mode.
-
----
-
 ## Citation
 
 If you find this project useful in your research, please cite the following paper:
@@ -63,7 +51,7 @@ If you find this project useful in your research, please cite the following pape
   year    = {2025}
 }
 
-
+```
 ## License
 
 This project is released under the Apache License 2.0.
