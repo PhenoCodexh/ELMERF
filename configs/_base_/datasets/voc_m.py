@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'PascalVOCDataset'
-data_root = '/home/qiaohongqiang/mxh/mmsegmentation/data/VOCdevkit/VOC2012'
+data_root = 'path/to/your/Data'
 crop_size = (512,512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),

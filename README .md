@@ -1,8 +1,10 @@
+# ELMERF
+
 ## Introduction
 
 ELMERF is an open-source semantic segmentation model based on PyTorch.
 
-ELMERF is designed for accurate and robust organ-level phenotyping of rice seedlings under salt stress. 
+ELMERF is designed for accurate and robust organ-level phenotyping of rice seedlings under salt stress.
 It enables precise segmentation of green leaves, yellow leaves, and roots from RGB images, and supports downstream phenotypic trait extraction for salt-tolerance evaluation and genetic analysis.
 
 The main branch works with PyTorch 1.8+.
@@ -11,22 +13,40 @@ The main branch works with PyTorch 1.8+.
 
 ## Installation
 
-Please refer to `docs/get_started.md` for installation instructions and 
-`docs/dataset_prepare.md` for dataset preparation.
+Please refer to the following documentation for detailed instructions:
+
+- [Installation guide](docs/get_started.md)
+- [Dataset preparation](docs/dataset_prepare.md)
 
 ---
 
-## Get Started - ELMERF
+## Get Started_ELMERF
 
-Please see the Overview for the general introduction of MMSegmentation.
+For general usage and design principles, please refer to the official MMSegmentation documentation:
 
-Please see user guides for the basic usage of MMSegmentation.
+- [MMSegmentation Overview](https://mmsegmentation.readthedocs.io/en/latest/)
+- [MMSegmentation User Guides](https://mmsegmentation.readthedocs.io/en/latest/user_guides/index.html)
+- [Advanced Tutorials](https://mmsegmentation.readthedocs.io/en/latest/advanced_guides/index.html)
 
-There are also advanced tutorials for in-depth understanding of MMSegmentation design and implementation.
+To train the model, run the training script and configure the corresponding config file:
 
-Run the `tools/train.py` file and fill in the configuration file to train the model.
+- [tools/train.py](tools/train.py)
 
-A script for generating segmentation masks from pretrained models is provided in `tools/pre_mask.py`.
+To generate segmentation masks from pretrained models, use the inference script:
+
+- [tools/pre_mask.py](tools/pre_mask.py)
+
+---
+
+## Documentation
+
+All project documentation can be accessed directly on GitHub:
+
+- [Installation](docs/get_started.md)
+- [Dataset preparation](docs/dataset_prepare.md)
+- [Inference](docs/inference.md)
+
+Clicking any link above will open the corresponding documentation page in GitHub Preview mode.
 
 ---
 
@@ -42,3 +62,8 @@ If you find this project useful in your research, please cite the following pape
   note    = {under review},
   year    = {2025}
 }
+
+
+## License
+
+This project is released under the Apache License 2.0.
