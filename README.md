@@ -4,8 +4,7 @@
 
 ELMERF is an open-source semantic segmentation model based on PyTorch.
 
-ELMERF is designed for accurate and robust organ-level phenotyping of rice seedlings under salt stress.
-It enables precise segmentation of green leaves, yellow leaves, and roots from RGB images, and supports downstream phenotypic trait extraction for salt-tolerance evaluation and genetic analysis.
+ELMERF is an image-based semantic segmentation framework for organ-level phenotyping of rice seedlings under salt stress. It supports the segmentation of green shoot tissues, yellow shoot tissues, and roots from RGB images, and enables the extraction of image-derived phenotypic traits for salt-tolerance evaluation and downstream genetic analysis.
 
 The main branch works with PyTorch 1.8+.
 
@@ -44,10 +43,10 @@ If you find this project useful in your research, please cite the following pape
 
 ```bibtex
 @article{ELMERF2025,
-  title   = {ELMERF: A Deep Learning-Based Image Phenotyping Framework for Salt-Tolerance Evaluation and Genetic Mapping in Rice Seedlings},
+  title   = {ELMERF: A Deep-Learning-Assisted Hydroponic RGB Phenotyping Framework for Rice Seedling Salt-Stress Evaluation and Genetic Mapping},
   author  = {Li, Yunluo and Meng, Xianghui and Xu, Qiyun and Xu, Ran and Bai, Xiaodong and Yang, Zhuang and Liu, Hongyan},
   journal = {Plant Phenomics},
-  note    = {under review},
+  note    = {under revision},
   year    = {2025}
 }
 

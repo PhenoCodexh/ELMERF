@@ -39,12 +39,12 @@ Each line in the split files corresponds to an image ID without file extension.
 
 The RSSD dataset supports organ-level semantic segmentation with the following class definitions:
 
-| Class ID | Class Name  |
-|---------:|-------------|
-| 0        | Background  |
-| 1        | Greenleaf   |
-| 2        | Yellowleaf  |
-| 3        | Root        |
+| Class ID | Class Name          |
+|---------:|---------------------|
+| 0        | Background          |
+| 1        | Green shoot tissues |
+| 2        | Yellow shoot tissues|
+| 3        | Roots               |
 
 ---
 
@@ -59,3 +59,4 @@ The RSSD dataset supports organ-level semantic segmentation with the following c
 ## RSSD Dataset
 
 For data acquisition, please contact **liuhy@hainanu.edu.cn**
+Note: In earlier versions, green_shoot_tissues and yellow_shoot_tissues were referred to as Greenleaf and Yellowleaf. This update only changes the class names; the label IDs and class order remain unchanged.

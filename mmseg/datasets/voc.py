@@ -15,7 +15,7 @@ class PascalVOCDataset(BaseSegDataset):
         split (str): Split txt file for Pascal VOC.
     """
     METAINFO = dict(
-        classes=  ('background', 'greenleaf', 'yellowleaf', 'root'),
+        classes=  ('background', 'greenshoottissues', 'yellowshoottissues', 'roots'),
         palette=[[242, 234, 218], [69, 185, 124], [143, 75, 46], [116, 120, 124]])
 
     def __init__(self,
