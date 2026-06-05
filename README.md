@@ -35,6 +35,12 @@ To generate segmentation masks from pretrained models, use the inference script:
 
 - [tools/pre_mask.py](tools/pre_mask.py)
 
+To verify installation and reproduce the provided test results, use the VOC-format
+test set and evaluation script:
+
+- [sample_data/VOCdevkit](sample_data/VOCdevkit)
+- [tools/test_elmerf_voc.py](tools/test_elmerf_voc.py)
+
 ---
 
 ## Citation

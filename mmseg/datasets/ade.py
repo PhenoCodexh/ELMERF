@@ -13,8 +13,10 @@ class ADE20KDataset(BaseSegDataset):
     '.png'.
     """
     METAINFO = dict(
-        classes=('background', 'greenleaf', 'yellowleaf','root'),
-        palette=[[242, 234, 218], [69, 185, 124], [143, 75, 46], [116, 120, 124]])
+        classes=('background', 'greenshoottissues', 'yellowshoottissues',
+                 'roots'),
+        palette=[[242, 234, 218], [69, 185, 124], [143, 75, 46],
+                 [116, 120, 124]])
 
     def __init__(self,
                  img_suffix='.jpg',

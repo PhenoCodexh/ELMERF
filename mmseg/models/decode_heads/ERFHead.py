@@ -428,7 +428,7 @@ class ERFHead(BaseDecodeHead):
         cnn_2 = self.fuse2(torch.cat([R2, S2], dim=1))
         C2 = self.cbam_M2(cnn_2)
         F2 = self.EAAF2(C2, S2)
-        F1 = self.EAFF1(C1, S1)
+        F1 = self.EAAF1(C1, S1)
         L1 = self.AREM1(F1, resize(MASK, size=S1.shape[2:]))
         L2 = self.AREM2(F2, resize(MASK, size=S2.shape[2:]))
         L3 = self.AREM3(S3, resize(MASK, size=S3.shape[2:]))
