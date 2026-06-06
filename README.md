@@ -61,3 +61,12 @@ If you find this project useful in your research, please cite the following pape
 
 This project is released under the [Apache License 2.0](LICENSE).
 
+## Contact
+
+We welcome communication and collaboration with researchers in China and abroad.
+For questions or academic discussion, please contact the authors by email:
+
+- lucky_xh2024@163.com
+- xiaodongbai@hainanu.edu.cn
+- liuhy@hainanu.edu.cn
+
