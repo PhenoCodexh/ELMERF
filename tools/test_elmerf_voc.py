@@ -13,18 +13,36 @@ from PIL import Image
 from mmseg.apis import inference_model
 from mmseg.registry import MODELS
 
-
 IMAGE_SUFFIXES = ('.jpg', '.jpeg', '.png', '.bmp', '.tif', '.tiff', '.webp')
 ELMERF_CLASSES = (
     'background', 'greenshoottissues', 'yellowshoottissues', 'roots')
 ELMERF_PALETTE = [[242, 234, 218], [69, 185, 124], [143, 75, 46],
                   [116, 120, 124]]
+KEY_REPLACEMENTS = [
+    ('decode_head.guided_attn1.', 'decode_head.EAAF1.'),
+    ('decode_head.guided_attn2.', 'decode_head.EAAF2.'),
+    ('decode_head.fuse_c1.', 'decode_head.fuse1.'),
+    ('decode_head.fuse_c2.', 'decode_head.fuse2.'),
+    ('decode_head.cbam_c1.', 'decode_head.cbam_M1.'),
+    ('decode_head.cbam_c2.', 'decode_head.cbam_M2.'),
+    ('decode_head.cbam_c4.', 'decode_head.cbam_M4.'),
+    ('decode_head.conv_lie1_4.', 'decode_head.conv_E1.'),
+    ('decode_head.conv_lie1_8.', 'decode_head.conv_E2.'),
+    ('decode_head.linear_c1.', 'decode_head.linear_M1.'),
+    ('decode_head.linear_c2.', 'decode_head.linear_M2.'),
+    ('decode_head.linear_c3.', 'decode_head.linear_M3.'),
+    ('decode_head.linear_c4.', 'decode_head.linear_M4.'),
+    ('decode_head.enhancer_c1.', 'decode_head.AREM1.'),
+    ('decode_head.enhancer_c2.', 'decode_head.AREM2.'),
+    ('decode_head.enhancer_c3.', 'decode_head.AREM3.'),
+    ('decode_head.enhancer_c4.', 'decode_head.AREM4.'),
+]
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
         description='Run ELMERF inference and mIoU evaluation on a VOC-format '
-        'semantic segmentation test set.')
+                    'semantic segmentation test set.')
     parser.add_argument(
         '--config',
         default='configs/ELMERF/ELMERF_mit-b1_voc.py',
@@ -74,29 +92,18 @@ def resolve_device(device):
     return device
 
 
-def remap_key(key):
-    replacements = [
-        ('decode_head.guided_attn1.', 'decode_head.EAAF1.'),
-        ('decode_head.guided_attn2.', 'decode_head.EAAF2.'),
-        ('decode_head.fuse_c1.', 'decode_head.fuse1.'),
-        ('decode_head.fuse_c2.', 'decode_head.fuse2.'),
-        ('decode_head.cbam_c1.', 'decode_head.cbam_M1.'),
-        ('decode_head.cbam_c2.', 'decode_head.cbam_M2.'),
-        ('decode_head.cbam_c4.', 'decode_head.cbam_M4.'),
-        ('decode_head.conv_lie1_4.', 'decode_head.conv_E1.'),
-        ('decode_head.conv_lie1_8.', 'decode_head.conv_E2.'),
-        ('decode_head.linear_c1.', 'decode_head.linear_M1.'),
-        ('decode_head.linear_c2.', 'decode_head.linear_M2.'),
-        ('decode_head.linear_c3.', 'decode_head.linear_M3.'),
-        ('decode_head.linear_c4.', 'decode_head.linear_M4.'),
-        ('decode_head.enhancer_c1.', 'decode_head.AREM1.'),
-        ('decode_head.enhancer_c2.', 'decode_head.AREM2.'),
-        ('decode_head.enhancer_c3.', 'decode_head.AREM3.'),
-        ('decode_head.enhancer_c4.', 'decode_head.AREM4.'),
-    ]
-    for old, new in replacements:
+def remap_key(key, model_keys):
+    if key in model_keys:
+        return key
+    for old, new in KEY_REPLACEMENTS:
         if key.startswith(old):
-            return new + key[len(old):]
+            candidate = new + key[len(old):]
+            if candidate in model_keys:
+                return candidate
+        if key.startswith(new):
+            candidate = old + key[len(new):]
+            if candidate in model_keys:
+                return candidate
     return key
 
 
@@ -110,7 +117,8 @@ def build_model(config_path, checkpoint_path, device):
     model = MODELS.build(cfg.model)
     checkpoint = torch.load(str(checkpoint_path), map_location='cpu')
     state_dict = checkpoint.get('state_dict', checkpoint)
-    state_dict = {remap_key(k): v for k, v in state_dict.items()}
+    model_keys = set(model.state_dict().keys())
+    state_dict = {remap_key(k, model_keys): v for k, v in state_dict.items()}
     missing, unexpected = model.load_state_dict(state_dict, strict=False)
     if missing or unexpected:
         raise RuntimeError(
@@ -163,7 +171,7 @@ def update_confusion_matrix(hist, pred, label, num_classes, ignore_index=255):
         np.int64)
     hist += np.bincount(
         encoded, minlength=num_classes * num_classes).reshape(
-            num_classes, num_classes)
+        num_classes, num_classes)
 
 
 def compute_metrics(hist, classes):
